@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative '../lib/wholefoods_recipe'
+
+CLI.new.call
