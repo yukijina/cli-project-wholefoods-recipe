@@ -1,3 +1,7 @@
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
 require_relative "./wholefoods_recipe/version"
 require_relative "./wholefoods_recipe/cli"
 require_relative "./wholefoods_recipe/recipe"
