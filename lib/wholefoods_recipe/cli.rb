@@ -3,6 +3,7 @@ class CLI
  def call
    puts "Welcome to Wholfoods Recipe CLI!!!"
    list_category
+
  end
 
  def list_category
