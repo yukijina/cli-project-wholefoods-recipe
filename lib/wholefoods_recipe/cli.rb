@@ -2,6 +2,8 @@ class CLI
 
  def call
    puts "Welcome to Wholfoods Recipe CLI!!!"
+   Scraper.scraper_category
+   Scraper.scraper_recipe
    list_category
 
  end
