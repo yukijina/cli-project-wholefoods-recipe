@@ -1,4 +1,4 @@
-class Recipe
+class Category
   attr_accessor :title, :url
   @@all = []
 

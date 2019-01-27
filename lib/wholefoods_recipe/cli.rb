@@ -12,7 +12,7 @@ class CLI
    input = gets.strip
    if input == "list"
      Scraper.scraper_category
-     Recipe.all.each.with_index(1) do |list, index|
+     Category.all.each.with_index(1) do |list, index|
        puts "#{index}. #{list.title}"
      end
      list
@@ -26,7 +26,7 @@ class CLI
  def list
    puts "Please type the number you are interested in or type exit: "
    input = gets.strip
-   if input.to_i <= Recipe.all.size && input.to_i > 0
+   if input.to_i <= Category.all.size && input.to_i > 0
      puts "More inforamtion for #{input.to_i}"
    elsif
      input == "exit"
