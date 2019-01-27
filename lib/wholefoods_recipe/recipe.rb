@@ -1,7 +1,15 @@
-class Receipe
+class Recipe
+  attr_accessor :title, :url
+  @@all = []
 
- def test
-   puts "This is Recipe class!!!"
+ def initialize(title, url)
+   @title = title
+   @url = url
+   @@all << self
+ end
+
+ def self.all
+   @@all
  end
 
 end
