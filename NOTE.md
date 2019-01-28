@@ -1,5 +1,5 @@
 class
 
 CLI  - interact with users
-Recipe - assign attribute
-Scraper - get data from website
+Category - assign attribute
+Scraper - scrape and get data from website
