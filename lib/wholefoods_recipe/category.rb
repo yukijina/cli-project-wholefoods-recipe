@@ -1,4 +1,4 @@
-class Category
+class WholefoodsRecipe::Category
   attr_accessor :title, :url
   @@all = []
 
