@@ -1,8 +1,10 @@
 # WholefoodsRecipe
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wholefoods_recipe`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wholefoods_recipe`. To experiment with that code, run `bin/wholefoods_recipe` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+*
+You can list the recipe categories and pick the category you are interested in. There is an option to open the link of category.
+Have fun!!
 
 ## Installation
 
@@ -21,8 +23,8 @@ Or install it yourself as:
     $ gem install wholefoods_recipe
 
 ## Usage
-
-TODO: Write usage instructions here
+*
+Check recipes in wholefoods Market (as of Jan 2019)
 
 ## Development
 
