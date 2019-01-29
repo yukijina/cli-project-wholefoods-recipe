@@ -10,4 +10,16 @@ class WholefoodsRecipe::Scraper
     end
   end
 
+  def self.scraper_recipes(url)
+    doc = Nokogiri::HTML(open(url))
+
+    doc.css(".he-recipes p a").each do |element|
+      binding.pry
+      recipe_name = element.text
+      recipe_url = element.attr("href")
+      WholefoodsRecipe::Recipe.new(recipe_name, recipe_url)
+    end
+
+  end
+
 end
