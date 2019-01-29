@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["yukijina"]
   spec.email         = ["yukijina@gmail.com"]
 
-  spec.summary       = "CLI for wholefoods a recipe collection"
+  spec.summary       = "CLI for wholefoods recipe collection"
   spec.description   = "Scrapes a recipe collection from https://www.wholefoodsmarket.com/recipe-collections"
   spec.homepage      = "https://github.com/yukijina/cli-project-wholefoods-recipe"
   spec.license       = "MIT"
