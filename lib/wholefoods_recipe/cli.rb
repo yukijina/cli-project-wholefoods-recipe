@@ -31,8 +31,11 @@ class WholefoodsRecipe::CLI
    input = gets.strip
    if input.to_i <= WholefoodsRecipe::Category.all.size && input.to_i > 0
      index = input.to_i-1
-     @user_select = WholefoodsRecipe::Category.all[index].title
-     puts "You selected #{input}.#{@user_select}!"
+     #@user_select = WholefoodsRecipe::Category.all[index].title
+     @user_select = WholefoodsRecipe::Category.all[index]
+     puts "You selected #{input}.#{@user_select.title}!"
+     WholefoodsRecipe::Scraper.scraper_recipes(@user_select.url)
+     
      display_link
    elsif
      input.downcase == "exit"
