@@ -19,7 +19,7 @@ class WholefoodsRecipe::Scraper
           recipe_name = element.text.strip
           recipe_url = "https://www.wholefoodsmarket.com" + element.attr("href")
         end
-        WholefoodsRecipe::Recipe.new(recipe_name, recipe_url) unless recipe_url == nil
+        WholefoodsRecipe::Recipes.new(recipe_name, recipe_url) unless recipe_url == nil
       end
     elsif doc.at_css(".he-recipes") == nil
       doc.css("span.field-content a").each do |element|
@@ -27,7 +27,7 @@ class WholefoodsRecipe::Scraper
           recipe_name = element.text
           recipe_url = "https://www.wholefoodsmarket.com" + element.attr("href")
         end
-        WholefoodsRecipe::Recipe.new(recipe_name, recipe_url) unless recipe_url == nil
+        WholefoodsRecipe::Recipes.new(recipe_name, recipe_url) unless recipe_url == nil
       end
     end
   end
