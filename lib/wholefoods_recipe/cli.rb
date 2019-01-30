@@ -31,8 +31,8 @@ class WholefoodsRecipe::CLI
    input = gets.strip
    if input.to_i <= WholefoodsRecipe::Category.all.size && input.to_i > 0
      index = input.to_i-1
-     @user_select = WholefoodsRecipe::Category.all[index]
-     puts "Here is the details for #{input}.#{@user_select.title}!"
+     @user_input = WholefoodsRecipe::Category.all[index]
+     puts "Here is the details for #{input}.#{@user_input.title}!"
      display_recipes
    elsif
      input.downcase == "exit"
@@ -45,11 +45,33 @@ class WholefoodsRecipe::CLI
  end
 
  def display_recipes
-   WholefoodsRecipe::Scraper.scraper_recipes(@user_select.url)
+   WholefoodsRecipe::Scraper.scraper_recipes(@user_input.url)
    WholefoodsRecipe::Recipes.all.each.with_index(1) do |recipe, index|
      puts "#{index}. #{recipe.recipe_name}"
    end
+   select_recipe
+ end
 
+ def select_recipe
+   puts "Please type the number you are interested in: "
+   input = gets.strip
+   if input.to_i <= WholefoodsRecipe::Recipes.all.size && input.to_i > 0
+     index = input.to_i-1
+     @user_select = WholefoodsRecipe::Recipes.all[index]
+     puts "Here is the details for #{input}.#{@user_select.recipe_name}!"
+     display_recipe_details
+   elsif
+     input.downcase == "exit"
+     goodbye
+   elsif
+     input.to_i <= 0 || input.to_i > WholefoodsRecipe::Recipe.all.size
+     puts "Invalid number"
+     select_recipe
+   end
+ end
+
+ def display_recipe_details
+   WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select.recipe_url)
  end
 
  def display_link
