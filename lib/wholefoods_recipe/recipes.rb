@@ -1,4 +1,4 @@
-class WholefoodsRecipe::Recipe
+class WholefoodsRecipe::Recipes
   attr_accessor :recipe_name, :recipe_url
   @@all = []
 
