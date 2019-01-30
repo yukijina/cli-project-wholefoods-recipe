@@ -12,5 +12,4 @@ class WholefoodsRecipe::Recipe
     @@all
   end
 
-
 end
