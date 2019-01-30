@@ -23,6 +23,7 @@ class WholefoodsRecipe::CLI
    WholefoodsRecipe::Category.all.each.with_index(1) do |list, index|
      puts "#{index}. #{list.title}"
    end
+   puts ""
    select_number
  end
 
@@ -32,7 +33,9 @@ class WholefoodsRecipe::CLI
    if input.to_i <= WholefoodsRecipe::Category.all.size && input.to_i > 0
      index = input.to_i-1
      @user_input = WholefoodsRecipe::Category.all[index]
-     puts "Here is the details for #{input}.#{@user_input.title}!"
+     puts ""
+     puts "Here is the recipes for No.#{input} #{@user_input.title}!"
+     WholefoodsRecipe::Scraper.scraper_recipes(@user_input.url)
      display_recipes
    elsif
      input.downcase == "exit"
@@ -45,7 +48,6 @@ class WholefoodsRecipe::CLI
  end
 
  def display_recipes
-   WholefoodsRecipe::Scraper.scraper_recipes(@user_input.url)
    WholefoodsRecipe::Recipes.all.each.with_index(1) do |recipe, index|
      puts "#{index}. #{recipe.recipe_name}"
    end
@@ -53,12 +55,14 @@ class WholefoodsRecipe::CLI
  end
 
  def select_recipe
+   puts ""
    puts "Please type the number you are interested in: "
    input = gets.strip
    if input.to_i <= WholefoodsRecipe::Recipes.all.size && input.to_i > 0
      index = input.to_i-1
      @user_select = WholefoodsRecipe::Recipes.all[index]
-     puts "Here is the details for #{input}.#{@user_select.recipe_name}!!"
+     puts "Here is the recipe for #{input}.#{@user_select.recipe_name}!!"
+     WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select.recipe_url)
      display_recipe_details
    elsif
      input.downcase == "exit"
@@ -71,20 +75,43 @@ class WholefoodsRecipe::CLI
  end
 
  def display_recipe_details
-   WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select.recipe_url)
    WholefoodsRecipe::Recipe.all.each do |recipe_details|
-     puts ""
-     puts "*** #{recipe_details.title} ***"
-     puts ""
-     puts "~ #{recipe_details.description} ~"
-     puts ""
-     puts "What you need: "
+     @recipe_details_title = recipe_details.title
+     @recipe_details_description = recipe_details.description
      recipe_details.ingredients.each.with_index(1) do |ingredient, index|
-       puts "#{index}. #{ingredient}"
+        puts "#{index}. #{ingredient}"
      end
+
    end
+   puts "********************************************************"
+   puts ""
+   puts "*** #{@recipe_details_title} ***"
+   #puts "*** #{recipe_details.title} ***"
+   puts ""
+   puts "~~ #{@recipe_details_description} ~~"
+   #puts "~~ #{recipe_details.description} ~~"
+   puts ""
+   puts "* What you need: "
+
    puts ""
    puts "Enjoy cooking!!!"
+   puts ""
+   puts "********************************************************"
+   go_back?
+ end
+
+ def go_back?
+   puts "Would you like to go back to the list of #{@user_input.title}[y/n]?"
+   answer = gets.strip.downcase
+   if answer == "yes" || answer == "y"
+     puts "OK! Here you go!!"
+     display_recipes
+   elsif answer == "no" ||  answer == "n"
+     list_category
+   else
+     puts "Invalid."
+     go_back?
+   end
  end
 
  def goodbye
