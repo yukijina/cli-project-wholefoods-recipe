@@ -35,15 +35,15 @@ class WholefoodsRecipe::Scraper
   def self.scraper_recipe_details(recipe_url)
     doc = Nokogiri::HTML(open(recipe_url))
 
-    doc.css(".torn-pod-content").each do |xml|
-      title = xml.css(".views-field-title h1").text
-      description = xml.css(".views-field-body").text.strip
-    end
+    xml = doc.css(".torn-pod-content")
+    title = xml.css(".views-field-title h1").text
+    description = xml.css(".views-field-body").text.strip
 
     doc.css(".field-items ul").each do |element|
-      binding.pry
-      ingredients = element.css("li").text.strip.split("\n").map {|text| text.strip}
+      @ingredients = element.css("li").text.strip.split("\n").map {|text| text.strip}
     end
+    WholefoodsRecipe::Recipe.new(title, description, @ingredients)
+
   end
 
 end
