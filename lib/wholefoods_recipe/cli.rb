@@ -87,31 +87,6 @@ class WholefoodsRecipe::CLI
    puts "Enjoy cooking!!!"
  end
 
- def display_link
-   puts "Would you like to open the link to see more details? [y/n]"
-   input = gets.strip.downcase
-   if input == "yes" || input == "y"
-     puts "Here you go!!"
-     WholefoodsRecipe::Category.all.each do |list|
-       if @user_select == list.title
-         system("open #{list.url}")
-       end
-     end
-   elsif input == "no" ||  input == "n"
-     puts "Would you like to select another recipe collection [y/n]?"
-     answer = gets.strip.downcase
-     if answer == "yes" || answer == "y"
-       puts "OK!"
-       display
-     else
-       goodbye
-     end
-   else
-     puts "Invalid."
-     display_link
-   end
- end
-
  def goodbye
    puts "Thanks for visiting my project!!!"
  end
