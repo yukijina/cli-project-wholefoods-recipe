@@ -76,23 +76,21 @@ class WholefoodsRecipe::CLI
 
  def display_recipe_details
    WholefoodsRecipe::Recipe.all.each do |recipe_details|
-     @recipe_details_title = recipe_details.title
-     @recipe_details_description = recipe_details.description
-     recipe_details.ingredients.each.with_index(1) do |ingredient, index|
-        puts "#{index}. #{ingredient}"
-     end
-
+     @recipe_name = recipe_details.name
+     @recipe_description = recipe_details.description
+     @recipe_ingredients = recipe_details.ingredients
    end
+
    puts "********************************************************"
    puts ""
-   puts "*** #{@recipe_details_title} ***"
-   #puts "*** #{recipe_details.title} ***"
+   puts "*** #{@recipe_name} ***"
    puts ""
-   puts "~~ #{@recipe_details_description} ~~"
-   #puts "~~ #{recipe_details.description} ~~"
+   puts "~~ #{@recipe_description} ~~"
    puts ""
    puts "* What you need: "
-
+        @recipe_ingredients.each.with_index(1) do |ingredient, index|
+          puts "#{index}. #{ingredient}"
+        end
    puts ""
    puts "Enjoy cooking!!!"
    puts ""
