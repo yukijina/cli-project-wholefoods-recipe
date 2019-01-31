@@ -2,6 +2,27 @@ class WholefoodsRecipe::CLI
 
  def call
    puts "Welcome to Wholfoods Recipe Collection!!!"
+   puts ""
+   puts "               #      #          "
+   puts "          #    # #   # #    #    "
+   puts "          # #  #  # #  #  # #    "
+   puts "           # #  #  #  # #  #     "
+   puts "            # #  #  #  #  #      "
+   puts "             #  #   #  #  #      "
+   puts "             # # # # # # # #     "
+   puts "           ##               ##   "
+   puts "          #                   #  "
+   puts "         #                     # "
+   puts "         #     # #    # #      # "
+   puts "         #    #   #  #   #     # "
+   puts "         #     #    #   #      # "
+   puts "         #      #      #      #  "
+   puts "          #       #   #      #   "
+   puts "           #        #       #    "
+   puts "          　 #             #     "
+   puts "         　    ##       ##       "
+   puts "                   ###          "
+   puts ""
    list_category
  end
 
@@ -105,7 +126,7 @@ class WholefoodsRecipe::CLI
      puts "OK! Here you go!!"
      display_recipes
    elsif answer == "no" ||  answer == "n"
-     list_category
+     goodbye
    else
      puts "Invalid."
      go_back?

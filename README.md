@@ -1,9 +1,9 @@
-# Wholefoods Recipe
+# Whole Foods Market Recipe Collection
 
 Welcome to Wholefoods Recipe Collection!
 To experiment CLI, run `./bin/wholefoods_recipe` for an interactive prompt.
 
-With this CLI, you can list the recipe categories and pick the category you are interested in. There is an option to open the link of the category.
+With this CLI, you can list recipe categories and pick a recipe you are interested in.
 Have fun!!
 
 ## Installation
@@ -23,8 +23,9 @@ Or install it yourself as:
     $ gem install wholefoods_recipe
 
 ## Usage
-*
-Check recipe categories using wholefoods Market Recipe Collection, "https://www.wholefoodsmarket.com/recipe-collections" (as of Jan 2019).
+
+Check recipes using whole Foods Market Recipe Collection.
+"https://www.wholefoodsmarket.com/recipe-collections" (as of Jan 2019).
 
 ## Development
 
