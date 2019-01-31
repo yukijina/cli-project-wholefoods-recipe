@@ -1,9 +1,9 @@
 class WholefoodsRecipe::Recipe
-  attr_accessor :title, :description, :ingredients
+  attr_accessor :name, :description, :ingredients
   @@all = []
 
-  def initialize(title, description, ingredients)
-    @title = title
+  def initialize(name, description, ingredients)
+    @name = name
     @description = description
     @ingredients = ingredients
     @@all << self
