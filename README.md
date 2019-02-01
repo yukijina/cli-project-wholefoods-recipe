@@ -20,8 +20,9 @@ Or install it yourself as:
 ## Usage
 
 Type the below and follow the on screen prompts.
-
-   `$ wholefoods_recipe`
+  ```
+   $ wholefoods_recipe
+  ```
 
 ## Development
 
