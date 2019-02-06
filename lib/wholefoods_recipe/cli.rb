@@ -77,7 +77,7 @@ class WholefoodsRecipe::CLI
 
  def select_recipe
    puts ""
-   puts "Please type the number to see a recipe or type menu to go back to the categories or exit: "
+   puts "Please type the number to see the recipe or type menu to go back to the categories or exit: "
    input = gets.strip
    if input.to_i <= WholefoodsRecipe::Recipes.all.size && input.to_i > 0
      index = input.to_i-1
