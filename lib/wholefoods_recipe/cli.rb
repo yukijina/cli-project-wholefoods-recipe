@@ -77,7 +77,7 @@ class WholefoodsRecipe::CLI
 
  def select_recipe
    puts ""
-   puts "Please type the number you are interested in: "
+   puts "Please type the number to see a recipe or type menu to go back to the categories or exit: "
    input = gets.strip
    if input.to_i <= WholefoodsRecipe::Recipes.all.size && input.to_i > 0
      index = input.to_i-1
@@ -85,6 +85,9 @@ class WholefoodsRecipe::CLI
      puts "Here is the recipe for #{input}.#{@user_select.recipe_name}!!"
      WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select.recipe_url)
      display_recipe_details
+   elsif
+     input.downcase == "menu"
+     display_category
    elsif
      input.downcase == "exit"
      goodbye
@@ -120,12 +123,16 @@ class WholefoodsRecipe::CLI
  end
 
  def go_back?
-   puts "Would you like to go back to the list of #{@user_input.title}[y/n]?"
+   puts "Would you like to go back to the list of #{@user_input.title}[y/n]? Or type menu or exit: "
    answer = gets.strip.downcase
    if answer == "yes" || answer == "y"
      puts "OK! Here you go!!"
      display_recipes
    elsif answer == "no" ||  answer == "n"
+     goodbye
+   elsif answer == "menu"
+     display_category
+   elsif answer == "exit"
      goodbye
    else
      puts "Invalid."
