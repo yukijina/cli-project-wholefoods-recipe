@@ -68,9 +68,9 @@ class WholefoodsRecipe::CLI
    end
  end
 
- def display_recipes
-   WholefoodsRecipe::Recipes.all.each.with_index(1) do |recipe, index|
-     puts "#{index}. #{recipe.recipe_name}"
+ def display_recipes  ## issue: adding instance of select_recipe input
+   WholefoodsRecipe::Recipe.all.each.with_index(1) do |recipe, index|
+     puts "#{index}. #{recipe.name}"
    end
    select_recipe
  end
@@ -79,11 +79,12 @@ class WholefoodsRecipe::CLI
    puts ""
    puts "Please type the number to see the recipe or type menu to go back to the categories or exit: "
    input = gets.strip
-   if input.to_i <= WholefoodsRecipe::Recipes.all.size && input.to_i > 0
+   if input.to_i <= WholefoodsRecipe::Recipe.all.size && input.to_i > 0
      index = input.to_i-1
-     @user_select = WholefoodsRecipe::Recipes.all[index]
-     puts "Here is the recipe for #{input}.#{@user_select.recipe_name}!!"
-     WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select.recipe_url)
+
+     @user_select = WholefoodsRecipe::Recipe.all[index]
+     puts "Here is the recipe for #{input}.#{@user_select.name}!!"
+     WholefoodsRecipe::Scraper.scraper_recipe_details(@user_select)
      display_recipe_details
    elsif
      input.downcase == "menu"
