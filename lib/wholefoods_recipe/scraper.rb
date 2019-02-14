@@ -19,7 +19,7 @@ class WholefoodsRecipe::Scraper
           recipe_name = element.text.strip
           recipe_url = "https://www.wholefoodsmarket.com" + element.attr("href")
         end
-        WholefoodsRecipe::Recipes.new(recipe_name, recipe_url) unless recipe_url == nil
+        WholefoodsRecipe::Recipe.new(recipe_name, recipe_url) unless recipe_url == nil
       end
     elsif doc.at_css(".he-recipes") == nil
       doc.css("span.field-content a").each do |element|
@@ -27,24 +27,24 @@ class WholefoodsRecipe::Scraper
           recipe_name = element.text
           recipe_url = "https://www.wholefoodsmarket.com" + element.attr("href")
         end
-        WholefoodsRecipe::Recipes.new(recipe_name, recipe_url) unless recipe_url == nil
+        WholefoodsRecipe::Recipe.new(recipe_name, recipe_url) unless recipe_url == nil
       end
     end
   end
 
-  def self.scraper_recipe_details(recipe_url)
-    doc = Nokogiri::HTML(open(recipe_url))
+  def self.scraper_recipe_details(recipe)
+    doc = Nokogiri::HTML(open(recipe.url))
 
     if xml = doc.at_css(".torn-pod-content")
-      name = xml.css(".views-field-title h1").text
+      #name = xml.css(".views-field-title h1").text
       description = xml.css(".views-field-body").text.strip
       ingredients = doc.css(".field-items ul li").map {|li| li.text.strip}
-      WholefoodsRecipe::Recipe.new(name, description, ingredients)
+      recipe.set_additonal_attribute(description, ingredients)
     elsif xml == nil
-      name = doc.css(".title h1").text
+      #name = doc.css(".title h1").text
       description = doc.css(".main-copy p").first.text
       ingredients = doc.css(".main-copy li").map {|li| li.text.strip}
-      WholefoodsRecipe::Recipe.new(name, description, ingredients)
+      recipe.set_additonal_attribute(description, ingredients)
     end
   end
 
