@@ -36,12 +36,10 @@ class WholefoodsRecipe::Scraper
     doc = Nokogiri::HTML(open(recipe.url))
 
     if xml = doc.at_css(".torn-pod-content")
-      #name = xml.css(".views-field-title h1").text
       description = xml.css(".views-field-body").text.strip
       ingredients = doc.css(".field-items ul li").map {|li| li.text.strip}
       recipe.set_additonal_attribute(description, ingredients)
     elsif xml == nil
-      #name = doc.css(".title h1").text
       description = doc.css(".main-copy p").first.text
       ingredients = doc.css(".main-copy li").map {|li| li.text.strip}
       recipe.set_additonal_attribute(description, ingredients)
