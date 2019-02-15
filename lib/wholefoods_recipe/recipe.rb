@@ -9,9 +9,16 @@ class WholefoodsRecipe::Recipe
   end
 
   def set_additonal_attribute(description, ingredients)
-    @description = description
-    @ingredients = ingredients
-    @@all << self
+
+     @description = description
+     @ingredients = ingredients
+    # @@all << self
+# binding.pry
+#     @@all.each do |recipe|
+#       recipe.description = @description
+#       recipe.ingredients = @ingredients
+    #end
+
   end
 
   def self.all
