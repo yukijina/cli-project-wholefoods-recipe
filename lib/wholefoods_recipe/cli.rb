@@ -102,8 +102,8 @@ class WholefoodsRecipe::CLI
  def display_recipe_details
    WholefoodsRecipe::Recipe.all.each do |recipe_details|
      @recipe_name = recipe_details.name
-     @recipe_description = recipe_details.description
-     @recipe_ingredients = recipe_details.ingredients
+     @recipe_description = recipe_details.description if recipe_details.description != nil
+     @recipe_ingredients = recipe_details.ingredients if recipe_details.ingredients != nil
    end
 
    puts "********************************************************"
