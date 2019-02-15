@@ -68,7 +68,7 @@ class WholefoodsRecipe::CLI
    end
  end
 
- def display_recipes  ## issue: adding instance of select_recipe input
+ def display_recipes
    WholefoodsRecipe::Recipe.all.each.with_index(1) do |recipe, index|
      puts "#{index}. #{recipe.name}"
    end
@@ -88,6 +88,7 @@ class WholefoodsRecipe::CLI
      display_recipe_details
    elsif
      input.downcase == "menu"
+     WholefoodsRecipe::Recipe.all.clear
      display_category
    elsif
      input.downcase == "exit"
@@ -132,6 +133,7 @@ class WholefoodsRecipe::CLI
    elsif answer == "no" ||  answer == "n"
      goodbye
    elsif answer == "menu"
+     WholefoodsRecipe::Recipe.all.clear
      display_category
    elsif answer == "exit"
      goodbye
