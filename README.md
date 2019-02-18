@@ -1,7 +1,6 @@
 # Whole Foods Market Recipe Collection
 
-Whole Foods Recipe Collection will pull recipes from Whole Foods Market.
-You can pick a recipe from the lists of recipes picked from categories.
+You can find your favorite recipes from Whole Foods Market Recipe Collection.
 
 ## Installation
 
