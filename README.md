@@ -4,15 +4,7 @@ You can find your favorite recipes from Whole Foods Market Recipe Collection.
 
 ## Installation
 
-```ruby
-gem 'wholefoods_recipe'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+Install it yourself as:
 
     $ gem install wholefoods_recipe
 
